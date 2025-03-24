@@ -1,28 +1,23 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch, FaRegSmile, FaRegHeart, FaShoppingBag } from "react-icons/fa";
-import { useState } from "react";
-import "./Navbar.css"; // Import CSS file
+import "./Navbar.css";
 
-const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+const Navbar = ({ searchTerm, setSearchTerm }) => {
   const navigate = useNavigate();
 
-  // Handle Search
   const handleSearch = (e) => {
     e.preventDefault();
-    if (searchQuery.trim() !== "") {
-      navigate(`/products?search=${searchQuery}`);
+    if (searchTerm.trim() !== "") {
+      navigate(`/products?search=${searchTerm}`);
     }
   };
 
   return (
     <nav className="navbar">
-      {/* Logo */}
       <div className="logo">
         <NavLink to="/">FREAKY FASHION.</NavLink>
       </div>
 
-      {/* Navigation Links */}
       <ul className="nav-links">
         <li><NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>Herr</NavLink></li>
         <li><NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>Dam</NavLink></li>
@@ -38,13 +33,12 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Sök..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button type="submit"><FaSearch /></button>
       </form>
 
-      {/* Icons */}
       <div className="nav-icons">
         <FaRegSmile className="icon" />
         <FaRegHeart className="icon" />
