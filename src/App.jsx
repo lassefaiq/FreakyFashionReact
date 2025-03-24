@@ -9,13 +9,13 @@ import AddProduct from "./pages/AddProduct";
 
 function Layout({ children }) {
     const location = useLocation();
-    const isAdminPage = location.pathname.startsWith("/admin"); // Hide navbar & footer for admin pages
+    const isAdminPage = location.pathname.startsWith("/admin"); // gömmer navbar och footer på admin sidor
 
     return (
         <div className="app-container">
-            {!isAdminPage && <Navbar />} {/* Show Navbar only if not in admin */}
+            {!isAdminPage && <Navbar />} {/* visar navbar på allt förutom admin sidor */}
             {children}
-            {!isAdminPage && <Footer />} {/* Show Footer only if not in admin */}
+            {!isAdminPage && <Footer />} {/* visar footer på allt förutom admin sidor */}
         </div>
     );
 }
