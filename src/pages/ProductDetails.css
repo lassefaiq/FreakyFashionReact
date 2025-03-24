@@ -46,7 +46,7 @@
     margin-top: 15px;
 }
 
-/* ✅ Similar Products Section */
+
 .similar-products {
     max-width: 1200px;
     margin: 40px auto;
@@ -59,14 +59,14 @@
     margin-bottom: 20px;
 }
 
-/* ✅ Grid for similar products */
+
 .similar-grid {
     display: flex;
     justify-content: space-evenly;
     gap: 20px;
 }
 
-/* ✅ Each product card */
+
 .product-card {
     background-color: none;
     padding: 10px;
@@ -81,7 +81,7 @@
     border-radius: 10px;
 }
 
-/* ✅ Responsive Adjustments */
+
 @media (max-width: 768px) {
     .product-details {
         flex-direction: column;
