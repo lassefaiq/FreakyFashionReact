@@ -16,7 +16,7 @@ const Admin = () => {
             });
     }, []);
 
-    // ✅ DELETE product
+    // radera produkt
     const handleDelete = (id) => {
         if (window.confirm("Är du säker på att du vill ta bort produkten?")) {
             axios.delete(`http://localhost:3001/products/${id}`)
