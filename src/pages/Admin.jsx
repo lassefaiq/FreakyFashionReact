@@ -50,7 +50,7 @@ const Admin = () => {
                             <th>Namn</th>
                             <th>SKU</th>
                             <th>Pris</th>
-                            <th>Åtgärder</th> {/* ✅ New column for delete */}
+                            <th>Åtgärder</th> {/* kolumn för att radera produkt*/}
                         </tr>
                     </thead>
                     <tbody>
