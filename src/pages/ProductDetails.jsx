@@ -9,7 +9,7 @@ const ProductDetails = () => {
     const [similarProducts, setSimilarProducts] = useState([]);
 
     useEffect(() => {
-        // Fetch the product details
+        // Hämtar produkt detaljer
         axios.get(`http://localhost:3001/products/${id}`)
             .then(response => {
                 setProduct(response.data);
@@ -18,12 +18,12 @@ const ProductDetails = () => {
                 console.error("Error fetching product:", error);
             });
 
-        // Fetch all products and randomize similar products
+        // Hämtar alla produkter och shufflar ordningen för att visa 3 slumpmässiga produkter
         axios.get("http://localhost:3001/products")
             .then(response => {
                 const filteredProducts = response.data.filter(p => p.id !== parseInt(id));
                 const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5);
-                setSimilarProducts(shuffledProducts.slice(0, 3)); // Display 3 random similar products
+                setSimilarProducts(shuffledProducts.slice(0, 3)); 
             })
             .catch(error => {
                 console.error("Error fetching similar products:", error);
@@ -37,12 +37,12 @@ const ProductDetails = () => {
     return (
         <div>
             <div className="product-details">
-                {/* Left Side - Product Image */}
+                {/* produkt bild */}
                 <div className="product-image">
                     <img src={product.image} alt={product.name} />
                 </div>
 
-                {/* Right Side - Product Info */}
+                {/* produkt info */}
                 <div className="product-info">
                     <h1>{product.name}</h1>
                     <p className="description">{product.description}</p>
@@ -51,7 +51,7 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-            {/* Similar Products Section - Positioned Below */}
+            {/* liknande produkter sektion */}
             <div className="similar-products">
                 <h2>Liknande produkter</h2>
                 <div className="similar-grid">
