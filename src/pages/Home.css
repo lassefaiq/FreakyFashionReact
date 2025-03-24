@@ -1,0 +1,196 @@
+html, body {
+    background-color: #FFE4B5;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, 'Times New Roman', Times, serif;
+    margin: 0; /* Ensures no unwanted spacing */
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+/* Center the entire home-container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything inside */
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto; /* Centers horizontally */
+}
+
+
+.hero-section {
+    display: flex;
+    width: 100%;
+    height: 400px; /* Adjust as needed */
+    padding: 0;
+    margin: 0;
+}
+
+.promo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between images */
+    padding: 20px 0; /* Space above and below the section */
+    max-width: 1200px;
+    margin: 0 auto; /* Center the section */
+}
+
+.promo-image {
+    width: 100%;
+    max-width: 350px; /* Adjust width to fit within grid */
+    height: auto;
+    object-fit: cover; /* Ensure images keep their proportions */
+    border-radius: 50%; /* Optional: rounded corners */
+}
+
+
+/* Left Side - Image with Text Overlay */
+.hero-left {
+    width: 50%;
+    background: url('/src/assets/LeftHeader.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Right Side - Image Only */
+.hero-right {
+    width: 50%;
+    background: url('/src/assets/RightHeader.jpg') no-repeat center center/cover;
+}
+
+/* Categories section */
+.categories {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures content stays centered */
+    margin: 10px 0 30px 0;
+    padding: 0 50px; /* Optional: adds some horizontal padding */
+}
+
+/* Product grid layout */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center; /* Ensures grid stays centered */
+    align-items: center; /* Ensures equal height items */
+    width: calc(100% - 100px); /* Reduce total width to accommodate margins */
+    max-width: 1100px; /* Slightly smaller than before */
+    margin: 0 auto; /* Centers the grid */
+    padding: 10px 50px; /* Adds inner spacing */
+    gap: 20px; /* Space between items */
+    box-sizing: border-box; /* Ensures padding doesn't add extra width */
+}
+
+/* Individual product cards */
+.category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+    background-color: #89CFF0;
+    min-height: 250px;
+}
+
+.category:hover {
+    transform: scale(1.05);
+}
+
+/* Product images */
+.category-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Product name */
+.product-name {
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Product price */
+.product-price {
+    color: #555;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Shop button */
+.shop-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FFE4B5;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* When screen width is 640px and above → 2 items per row */
+@media (min-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    }
+
+}
+
+@media (max-width: 1023px) {
+    .nav-links {
+        display: none; /* Hide links on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        width: 20%;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+
+/* When screen width is below 640px → 1 item per row */
+@media (max-width: 639px) {
+    .category-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 item per row */
+    }
+
+    .promo-section {
+        display: none;
+    }
+}
