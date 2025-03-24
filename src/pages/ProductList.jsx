@@ -1,30 +1,41 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function ProductList() {
+const ProductList = () => {
     const [products, setProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         axios.get("http://localhost:3001/products")
-            .then(response => setProducts(response.data))
-            .catch(error => console.error("Error fetching products:", error));
+            .then(res => setProducts(res.data))
+            .catch(err => console.error(err));
     }, []);
 
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
-        <div>
-            <h1>Product List</h1>
-            <ul>
-                {products.map(product => (
-                    <li key={product.id}>
+        <div className="product-list">
+            <input
+                type="text"
+                placeholder="Sök produkt..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+            />
+
+            <div className="product-grid">
+                {filteredProducts.map(product => (
+                    <div key={product.id} className="product-card">
+                        <img src={product.image} alt={product.name} />
                         <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                        <p>Price: {product.price} SEK</p>
-                        <img src={product.image} alt={product.name} width="100" />
-                    </li>
+                        <p>{product.price} SEK</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
-}
+};
 
 export default ProductList;
